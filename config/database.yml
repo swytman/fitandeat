@@ -3,6 +3,7 @@ development:
   database: fitandeat
   pool: 5
   host: localhost
-  username: stepanov
+  username: pgfit
+  password: fitfit
   timeout: 5000
 

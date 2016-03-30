@@ -1,4 +1,7 @@
 class ExercisesController < ApplicationController
+
+  before_action :set_chapter
+
   def index
     @exercises = Exercise.all
   end
@@ -13,6 +16,10 @@ class ExercisesController < ApplicationController
 
   def destroy
 
+  end
+
+  def set_chapter
+    @chapter = {title: 'Упражнения', src: exercises_path}
   end
 
 end

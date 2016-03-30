@@ -5,25 +5,19 @@
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1/fitandeat</jdbc-url>
-      <user-name>stepanov</user-name>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails fitandeat: test" uuid="73128c95-271e-4f6d-931b-f3efde5b2fef">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://198.199.109.47/fitandeat</jdbc-url>
-      <user-name>postgres</user-name>
-      <user-password>dfd0dfcfdfc6df9bdf98df99dfccdfc5dfc5dfde</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails fitandeat: production" uuid="e0fb04ba-1ee8-4e37-a39b-1b3e35ecd24d">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://198.199.109.47/football_production</jdbc-url>
-      <user-name>postgres</user-name>
-      <user-password>dfd0dfcfdfc6df9bdf98df99dfccdfc5dfc5dfde</user-password>
       <libraries />
     </data-source>
   </component>
 </project>
-
