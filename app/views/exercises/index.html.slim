@@ -1,0 +1,6 @@
+h2 Упражнения
+
+ul
+  - @exercises.each do |exercise|
+    li: a href=exercise_path(exercise) =exercise.title
+
