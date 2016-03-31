@@ -1,0 +1,24 @@
+.row
+  .col.s12
+    = form_for(@exercise) do |f|
+      .row
+        .input-field
+          = f.text_field :title
+          label for='title' Название
+
+      .row
+        .input-field
+          = f.text_area :description, class: 'materialize-textarea'
+          label for='title' Описание
+
+      .row
+        .col.s4
+          .input-field
+            button.btn.waves-effect.waves-light name="action" type="submit"
+              | Сохранить
+              i.material-icons.right send
+        .col.s4.right
+          .input-field
+            a.waves-effect.waves-teal.btn-flat href="#{exercises_path}" Отмена
+
+

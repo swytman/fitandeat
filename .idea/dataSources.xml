@@ -5,6 +5,7 @@
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1/fitandeat</jdbc-url>
+      <user-name>stepanov</user-name>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails fitandeat: test" uuid="73128c95-271e-4f6d-931b-f3efde5b2fef">
@@ -21,3 +22,4 @@
     </data-source>
   </component>
 </project>
+
