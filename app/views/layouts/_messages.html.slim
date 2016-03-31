@@ -1,0 +1,11 @@
+/ Rails flash messages styled for Bootstrap 3.0
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    div class=("status-message center-align")
+      = content_tag :div, msg, :id => "flash_#{name}"
+
+coffee:
+  $(document).ready ->
+    window.setTimeout ( ->
+      $('.status-message').slideUp()
+    ), 1500

@@ -2,8 +2,8 @@
   .col.s9
     h5.header Упражнения
   .col.s3
-    a.btn.waves-effect.waves-light href=new_exercise_path Cоздать
+    a.btn.waves-effect.top10.waves-light href=new_exercise_path Cоздать
 ul
-  - @exercises.each do |exercise|
-    li: a href=exercise_path(exercise) =exercise.title
+  - @items.each do |exercise|
+    li: a href=edit_exercise_path(exercise) =exercise.title
 
