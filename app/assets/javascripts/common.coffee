@@ -1,0 +1,2 @@
+$ ->
+  $('select').material_select();

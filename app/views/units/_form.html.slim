@@ -1,0 +1,41 @@
+.row
+  .col.s12
+    = form_for(@item) do |f|
+      .row
+        .col.s12
+          .input-field
+            = f.text_field :short_title
+            label for='short_title' Сокращенное наименование
+
+      .row
+        .col.s12
+          .input-field
+            = f.text_field :title
+            label for='title' Один
+
+      .row
+        .col.s12
+          .input-field
+            = f.text_field :few_title
+            label for='few_title' Два
+
+      .row
+        .col.s12
+          .input-field
+            = f.text_field :many_title
+            label for='many_title' Много
+
+      .row
+        .col.s8
+          .input-field
+            button.btn.waves-effect.waves-light name="action" type="submit"
+              | Сохранить
+              i.material-icons.right send
+            a.btn-flat href="#{units_path}" Отмена
+        - unless @item.new_record?
+          .col.s4.right
+            .input-field
+              =link_to 'Удалить', unit_path(@item), method: :delete, class: 'btn waves-effect waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
+
+
+

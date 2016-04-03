@@ -1,0 +1,9 @@
+.row
+  .col.s9
+    h5.header Единицы измерения
+  .col.s3
+    a.btn.waves-effect.top10.waves-light href=new_unit_path Cоздать
+ul
+  - @items.each do |item  |
+    li: a href=edit_unit_path(item) = item.title
+

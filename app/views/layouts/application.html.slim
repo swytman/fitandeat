@@ -15,14 +15,10 @@ html
     .row
       nav
         .nav-wrapper
-          .col.s12
-            .left
+          .left.nav-brand
+            a href=root_path
               =image_tag 'dumbbell.png', size: "60x60"
-
-            ul#nav-mobile.left.hide-on-med-and-down
-              - if @chapter
-                li
-                  a href=@chapter[:src] =@chapter[:title]
+          =render 'layouts/menu'
 
     .container
       = render 'layouts/messages'

@@ -8,9 +8,9 @@ class ExercisesController < ApplicationController
   end
 
   def create
-    item = Exercise.new(exercise_params)
-    if item.save
-      redirect_to edit_exercise_path(item), notice: 'Создано'
+    @item = Exercise.new(exercise_params)
+    if @item.save
+      redirect_to exercises_path, notice: 'Создано'
     else
       render action: 'new', error: 'Ошибка при добавлении'
     end
@@ -34,7 +34,11 @@ class ExercisesController < ApplicationController
   end
 
   def destroy
-
+    if @item.destroy
+      redirect_to exercises_path(@item), notice: 'Удалено'
+    else
+      render action: 'edit', error: 'Ошибка удаления'
+    end
   end
 
   def set_chapter
@@ -44,7 +48,7 @@ class ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params[:exercise].permit(:title, :description)
+    params[:exercise].permit(:title, :description, :unit_id)
   end
 
   def get_item

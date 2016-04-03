@@ -1,0 +1,2 @@
+class ProgramDaysController < ApplicationController
+end

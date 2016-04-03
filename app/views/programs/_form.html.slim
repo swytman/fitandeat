@@ -11,14 +11,14 @@
         .col.s12
           .input-field
             = f.text_area :description, class: 'materialize-textarea'
-            label for='description' Описание
-      .row
-        .col.s12
-          .input-field
-            = f.collection_select :unit_id, Unit.all, :id, :title,
-                                  {selected: @item.unit_id, include_blank: true}, {class: ''}
-            label for='unit_id' Единица измерения
+            label for='title' Описание
 
+      - if @item.new_record?
+        .row
+          .col.s12
+            .input-field
+              = text_field_tag :days_count
+              label for='title' Сколько дней создать?
 
       .row
         .col.s8
@@ -26,11 +26,11 @@
             button.btn.waves-effect.waves-light name="action" type="submit"
               | Сохранить
               i.material-icons.right send
-            a.btn-flat href="#{exercises_path}" Отмена
+            a.btn-flat href="#{programs_path}" Отмена
         - unless @item.new_record?
           .col.s4.right
             .input-field
-              =link_to 'Удалить', exercise_path(@item), method: :delete, class: 'btn waves-effect waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
+              =link_to 'Удалить', program_path(@item), method: :delete, class: 'btn waves-effect waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
 
 
 
