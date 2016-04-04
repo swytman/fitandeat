@@ -22,8 +22,7 @@ class ProgramsController < ApplicationController
   end
 
   def edit
-
-
+    @days = @item.program_days.order('program_days.order ASC')
   end
 
   def update

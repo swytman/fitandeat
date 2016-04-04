@@ -1,3 +1,29 @@
-// Place all the styles related to the program_days controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.program-days{
+  &-container{
+
+
+  }
+
+  .day{
+    margin: 7px;
+    border-top: 2px solid #ee6e73;
+    background-color: #fbe9e7 ;
+    .day-title{
+      color: #eeeeee;
+      font-size: 2em;
+      text-align: center;
+      width: 50px;
+      padding: 20px 10px;
+      background-color: #ee6e73;
+
+    }
+    .day-exercises{
+      width: 80%;
+    }
+
+  }
+
+
+
+
+}

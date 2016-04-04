@@ -34,3 +34,12 @@
 
 
 
+- unless @item.new_record? && @days.any?
+  h5 Программа тренировок
+  .row
+    .program-days
+      - @days.each do |day|
+        .col.s12
+          .day.z-depth-1
+            .day-title =day.order
+            .day-exercises
