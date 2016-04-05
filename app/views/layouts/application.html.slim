@@ -18,7 +18,10 @@ html
           .left.nav-brand
             a href=root_path
               =image_tag 'dumbbell.png', size: "60x60"
-          =render 'layouts/menu'
+          - if @chapters
+            =render 'shared/breadcrumb'
+          - else
+            = render 'layouts/menu'
 
     .container
       = render 'layouts/messages'

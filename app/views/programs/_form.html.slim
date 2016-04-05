@@ -1,45 +1,51 @@
 .row
-  .col.s12
-    = form_for(@item) do |f|
-      .row
-        .col.s12
-          .input-field
-            = f.text_field :title
-            label for='title' Название
+  ul.tabs.z-depth-1
+    li.tab.col.s3
+      a.active href="#common"  Общая
+    - disabled = 'disabled' if @item.new_record?
+    li.tab.col.s3 class=disabled
+      a href="#days"  Расписание
 
-      .row
-        .col.s12
-          .input-field
-            = f.text_area :description, class: 'materialize-textarea'
-            label for='title' Описание
+  #common.col.s12.top30
+    .row
+      .col.s12
+        = form_for(@item) do |f|
+          .row
+            .col.s12
+              .input-field
+                = f.text_field :title
+                label for='title' Название
 
-      - if @item.new_record?
-        .row
+          .row
+            .col.s12
+              .input-field
+                = f.text_area :description, class: 'materialize-textarea'
+                label for='title' Описание
+
+          - if @item.new_record?
+            .row
+              .col.s12
+                .input-field
+                  = text_field_tag :days_count
+                  label for='title' Сколько дней создать?
+
+          .row
+            .col.s8
+              .input-field
+                button.btn.waves-effect.waves-light name="action" type="submit"
+                  | Сохранить
+                  i.material-icons.right send
+                a.btn-flat href="#{programs_path}" Отмена
+            - unless @item.new_record?
+              .col.s4.right
+                .input-field
+                  =link_to 'Удалить', program_path(@item), method: :delete, class: 'btn waves-effect waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
+
+  - if !@item.new_record? && @days.any?
+    #days.col.s12.top30
+      .program-days
+        - @days.each do |day|
           .col.s12
-            .input-field
-              = text_field_tag :days_count
-              label for='title' Сколько дней создать?
-
-      .row
-        .col.s8
-          .input-field
-            button.btn.waves-effect.waves-light name="action" type="submit"
-              | Сохранить
-              i.material-icons.right send
-            a.btn-flat href="#{programs_path}" Отмена
-        - unless @item.new_record?
-          .col.s4.right
-            .input-field
-              =link_to 'Удалить', program_path(@item), method: :delete, class: 'btn waves-effect waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
-
-
-
-- unless @item.new_record? && @days.any?
-  h5 Программа тренировок
-  .row
-    .program-days
-      - @days.each do |day|
-        .col.s12
-          .day.z-depth-1
-            .day-title =day.order
-            .day-exercises
+            .day.z-depth-1
+              .day-title =day.order
+              .day-exercises

@@ -17,8 +17,7 @@ class UnitsController < ApplicationController
     end
 
     def edit
-
-
+      @chapters.push({title: "Редактировать \"#{@item.title}\"", src: "#"})
     end
 
     def update
@@ -31,6 +30,7 @@ class UnitsController < ApplicationController
 
     def new
       @item = Unit.new
+      @chapters.push({title: "Добавить ед.изм", src: "#"})
     end
 
     def destroy
@@ -42,7 +42,7 @@ class UnitsController < ApplicationController
     end
 
     def set_chapter
-      @chapter = {title: 'Ед. изм.', src: units_path}
+      @chapters = [{title: 'Ед. изм.', src: units_path}]
     end
 
     private

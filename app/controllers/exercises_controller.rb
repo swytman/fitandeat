@@ -17,8 +17,7 @@ class ExercisesController < ApplicationController
   end
 
   def edit
-
-
+    @chapters.push({title: "Редактировать \"#{@item.title}\"", src: "#"})
   end
 
   def update
@@ -31,6 +30,7 @@ class ExercisesController < ApplicationController
 
   def new
     @item = Exercise.new
+    @chapters.push({title: "Добавить упражнение", src: "#"})
   end
 
   def destroy
@@ -42,7 +42,7 @@ class ExercisesController < ApplicationController
   end
 
   def set_chapter
-    @chapter = {title: 'Упражнения', src: exercises_path}
+    @chapters = [{title: 'Упражнения', src: exercises_path}]
   end
 
   private

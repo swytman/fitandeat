@@ -23,6 +23,7 @@ class ProgramsController < ApplicationController
 
   def edit
     @days = @item.program_days.order('program_days.order ASC')
+    @chapters.push({title: "Редактировать \"#{@item.title}\"", src: "#"})
   end
 
   def update
@@ -35,6 +36,7 @@ class ProgramsController < ApplicationController
 
   def new
     @item = Program.new
+    @chapters.push({title: "Добавить программу", src: "#"})
   end
 
   def destroy
@@ -46,7 +48,7 @@ class ProgramsController < ApplicationController
   end
 
   def set_chapter
-    @chapter = {title: 'Программы', src: programs_path}
+    @chapters = [{title: 'Программы', src: programs_path}]
   end
 
   private
