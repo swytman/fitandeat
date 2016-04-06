@@ -26,6 +26,21 @@ class ProgramsController < ApplicationController
     @chapters.push({title: "Редактировать \"#{@item.title}\"", src: "#"})
   end
 
+  def update_day_order
+    return(head :bad_request) unless params[:days]
+    respond_to do |format|
+      format.json do
+        params[:days].each_with_index do |id, index|
+          ProgramDay.find(id.to_i).update(order: index+1)
+        end
+
+        render json: params[:days]
+      end
+    end
+
+
+  end
+
   def update
     if @item.update(program_params)
       redirect_to edit_program_path(@item), notice: 'Сохранено'

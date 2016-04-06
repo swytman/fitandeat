@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   root 'static#index'
   resources :exercises
   resources :units
-  resources :programs
+  resources :programs do
+    member do
+      post :update_day_order
+    end
+  end
   resources :program_days
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
