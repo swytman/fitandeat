@@ -1,6 +1,7 @@
-.exercises-list
+ul.exercises-list.uisortable data-url=api_update_order_path({class: 'DayExercise'})
 
 
 javascript:
   window.all_exercises = #{@all_exercises_json.html_safe};
   window.day_exercises = #{@exercies_json.html_safe};
+  window.parent_id = #{@item.id};

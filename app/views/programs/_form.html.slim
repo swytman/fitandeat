@@ -43,9 +43,9 @@
 
   - if !@item.new_record? && @days.any?
     #days.col.s12.top30
-      ul.program-days.uisortable data-url=update_day_order_program_path(@item)
+      ul.program-days.uisortable data-url=api_update_order_path({class: 'ProgramDay'})
         - @days.each do |day|
-          li.col.s12 id="days_#{day.id}"
+          li.col.s12 id="items_#{day.id}"
             .day.z-depth-1
-              .day-title =day.order
+              .day-title.orderable-index =day.order
               .day-exercises =render partial: 'day_short', locals: {day: day}

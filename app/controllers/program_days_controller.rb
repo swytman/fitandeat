@@ -1,6 +1,5 @@
 class ProgramDaysController < ApplicationController
 
-
   before_action :get_item,   only: [:show, :edit, :destroy, :update]
   before_action :get_parent, only: [:show, :edit, :destroy, :update]
   before_action :set_chapter
@@ -18,9 +17,10 @@ class ProgramDaysController < ApplicationController
     end
   end
 
+
   def edit
     @chapters.push({title: "Редактировать день #{@item.order}", src: "#"})
-    @exercies_json = @item.day_exercises.to_json
+    @exercies_json = @item.day_exercises.order('day_exercises.order ASC').to_json
     @all_exercises_json = Exercise.all.map{|e| {label: e.title, value: e.id}}.to_json
   end
 

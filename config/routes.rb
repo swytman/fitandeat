@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   root 'static#index'
   resources :exercises
   resources :units
-  resources :programs do
-    member do
-      post :update_day_order
-    end
-  end
+  resources :programs
   resources :program_days
+  resources :day_exercises
+
+  post "api/update_order" => 'api#update_order'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
