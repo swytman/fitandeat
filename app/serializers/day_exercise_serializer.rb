@@ -1,5 +1,5 @@
 class DayExerciseSerializer < ActiveModel::Serializer
-  attributes :title, :order, :description
+  attributes :id, :title, :order, :description
 
   def title
     return unless object.exercise

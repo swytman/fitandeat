@@ -64,8 +64,8 @@ class ProgramDaysList
       data: data
       type: 'POST'
       success: (data, textStatus, jqXHR) ->
-        if data.id
-          $(item).attr('id', "items_#{data.id}")
+        if data.program_day.id
+          $(item).attr('id', "items_#{data.program_day.id}")
           self.addEditLink(item)
         else
           $(item).remove()

@@ -55,8 +55,9 @@ class ExercisesList
       data: data
       type: 'POST'
       success: (data, textStatus, jqXHR) ->
-        if data.id
-          $(item).attr('id', "items_#{data.id}")
+        console.log(data.day_exercise.id)
+        if data.day_exercise.id
+          $(item).attr('id', "items_#{data.day_exercise.id}")
         else
           $(item).remove()
       error: (data, textStatus, jqXHR) ->
