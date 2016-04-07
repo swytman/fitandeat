@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+gem 'active_model_serializers'
+
 gem 'materialize-sass'
 #gem 'react-rails'
 gem 'slim'

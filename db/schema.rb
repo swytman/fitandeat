@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20160407131231) do
   create_table "day_exercises", force: :cascade do |t|
     t.integer  "program_day_id"
     t.integer  "exercise_id"
-    t.integer  "count",          default: 0
+    t.integer  "count"
     t.integer  "order"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
