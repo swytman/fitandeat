@@ -13,13 +13,13 @@ class ProgramDaysList
     $('.days-add').click this.onAddClick
 
   newButtonHtml: () ->
-    "<div class=\"row bottom20\"><div class=\"col s3 right\"><a class=\"btn right days-add waves-effect top10 waves-light\" href=\"#\">Добавить</a></div></div>"
+    "<div class=\"row bottom20\"><div class=\"col s3 right\"><div class=\"btn right days-add waves-effect top10 waves-light\">Добавить</div></div></div>"
 
   deleteButtonHtml: () ->
     "<div class=\"col s1 right\">
-            <a class=\"btn right days-delete waves-effect waves-light\" href=\"#\">
+            <div class=\"btn right days-delete waves-effect waves-light\">
               <i class=\"material-icons\">not_interested</i>
-            </a>
+            </div>
         </div>"
 
   addEditLink: (item) ->
