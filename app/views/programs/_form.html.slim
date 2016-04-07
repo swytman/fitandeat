@@ -41,11 +41,10 @@
                 .input-field
                   =link_to 'Удалить', program_path(@item), method: :delete, class: 'btn waves-effect waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
 
-  - if !@item.new_record? && @days.any?
+  - if !@item.new_record?
     #days.col.s12.top30
-      ul.program-days.uisortable data-url=api_update_order_path({class: 'ProgramDay'})
-        - @days.each do |day|
-          li.sortable-li.col.s12 id="items_#{day.id}"
-            .day.z-depth-1
-              .day-title.orderable-index =day.order
-              .day-exercises =render partial: 'day_short', locals: {day: day}
+      ul.days-list.uisortable data-url=api_update_order_path({class: 'ProgramDay'})
+
+javascript:
+ window.program_days = #{@program_days_json.html_safe};
+ window.parent_id = #{@item.id};

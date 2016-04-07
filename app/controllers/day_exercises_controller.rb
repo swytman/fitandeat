@@ -3,9 +3,9 @@ class DayExercisesController < ApplicationController
   def create
     respond_to do |format|
       format.json do
-        program_day = ProgramDay.find(params[:parent_id])
-        de = program_day.day_exercises.create({order: program_day.day_exercises.count+1})
-        render json: de
+        parent = ProgramDay.find(params[:parent_id])
+        item = parent.day_exercises.create({order: parent.day_exercises.count+1})
+        render json: item
       end
     end
   end
@@ -13,9 +13,9 @@ class DayExercisesController < ApplicationController
   def update
     respond_to do |format|
       format.json do
-        de = DayExercise.find(params[:id])
-        if de.update(de_params)
-          render json: de
+        item = DayExercise.find(params[:id])
+        if item.update(item_params)
+          render json: item
         else
           render json: { :success => false }
         end
@@ -26,9 +26,14 @@ class DayExercisesController < ApplicationController
   def destroy
     respond_to do |format|
       format.json do
-        de = DayExercise.find(params[:id])
-        if de.destroy
-          render json: de
+        parent = ProgramDay.find(params[:parent_id])
+        item = DayExercise.find(params[:id])
+        if item.destroy
+          items= parent.day_exercises.order('day_exercises.order ASC')
+          items.each_with_index do |item, i|
+            item.update({order: i+1})
+          end
+          render json: { :success => true }
         else
           render json: { :success => false }
         end
@@ -38,7 +43,7 @@ class DayExercisesController < ApplicationController
 
 
   private
-  def de_params
+  def item_params
     params.permit(:exercise_id, :count, :description)
   end
 end

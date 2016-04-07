@@ -1,38 +1,48 @@
-.program-days{
-  &-container{
+.days{
 
-
+  &-list{
+    padding-top: 20px;
   }
 
-  .day{
+  &-item{
     margin: 7px;
     border-top: 2px solid #ee6e73;
     background-color: #fbe9e7 ;
     position: relative;
-    .day-title{
-      float: left;
-      color: #eeeeee;
-      font-size: 2em;
-      text-align: center;
-      width: 50px;
-      padding: 20px 10px;
-      background-color: #ee6e73;
-
-    }
-    .day-exercises{
-      overflow: auto;
-      padding: 10px;
-    }
-
-    .day-edit-link{
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-    }
-
+  }
+  &-order{
+    float: left;
+    color: #eeeeee;
+    font-size: 2em;
+    text-align: center;
+    width: 50px;
+    padding: 20px 10px;
+    background-color: #ee6e73;
   }
 
 
+  &-description{
+    overflow: auto;
+    padding: 10px;
+  }
 
+  &-delete{
+    margin-top: 10px;
+    background-color: #ee6e73;
+    padding: 0 10px;
+    i{
+      margin-bottom: 5px;
+    }
+  }
+
+  &-add{
+    background-color: #ee6e73;
+  }
+
+  &-edit{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
 
 }

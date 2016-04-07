@@ -23,7 +23,6 @@ class ExercisesList
         </a>
     </div>"
 
-
   onAddClick: (event) =>
     this.addItem()
 
@@ -77,9 +76,12 @@ class ExercisesList
   deleteRequest: (item) ->
     exercise = this.serializeItem(item)
     $.ajax @new_url+"/#{exercise.id}",
+      data: {parent_id: @parent_id}
       type: 'DELETE'
       success: (data, textStatus, jqXHR) ->
         $(item).remove()
+        $('li.exercises-item').each (index)->
+          $(this).find('.exercises-order').html(index+1)
       error: (data, textStatus, jqXHR) ->
         console.log(data)
 
@@ -93,7 +95,6 @@ class ExercisesList
 
 
   itemHtml: (exercise) ->
-    console.log(exercise)
     order = $('li.exercises-item').length+1
     order = exercise.order  if exercise.order
     "<li class=\"row sortable-li exercises-item\" id=\"items_#{exercise.id}\">

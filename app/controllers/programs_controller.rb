@@ -22,7 +22,7 @@ class ProgramsController < ApplicationController
   end
 
   def edit
-    @days = @item.program_days.order('program_days.order ASC')
+    @program_days_json = @item.program_days.order('program_days.order ASC').to_json
     @chapters.push({title: "Редактировать \"#{@item.title}\"", src: "#"})
   end
 

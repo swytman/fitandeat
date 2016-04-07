@@ -4,10 +4,6 @@
 
 
 .exercises{
-  &-add{
-    background-color: #ee6e73;
-  }
-
   &-list{
     padding-top: 20px;
   }
@@ -39,5 +35,10 @@
       margin-bottom: 5px;
     }
   }
+
+  &-add{
+    background-color: #ee6e73;
+  }
+
 
 }
