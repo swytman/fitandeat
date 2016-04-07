@@ -14,14 +14,17 @@ html
   body
     .row
       nav
-        .nav-wrapper
-          .left.nav-brand
+        .nav-wrapper.col.s12
+          .left.padding-right10
             a href=root_path
               =image_tag 'dumbbell.png', size: "60x60"
+          a.right.button-collapse data-activates="mobile-demo" href="#"
+            i.material-icons menu
           - if @chapters
             =render 'shared/breadcrumb'
           - else
             = render 'layouts/menu'
+          = render 'layouts/mobile_menu'
 
     .container
       = render 'layouts/messages'
