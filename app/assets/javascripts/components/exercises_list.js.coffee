@@ -5,37 +5,47 @@ class ExercisesList
     @day_exercises = window.day_exercises
     @parent_id = window.parent_id
     @new_url = '/day_exercises'
-    @blank_exercise = {id: '', exercise_id: null, count: '', description: ''}
+    @blank_exercise = {id: '', exercise_id: null, count: 0, description: ''}
     buttonHtml = this.newButtonHtml()
     btn = $('<div/>').html(buttonHtml).contents()
     @e.before(btn)
     for k,exercise of @day_exercises
-      console.log(exercise)
       this.addItem(exercise)
     $('.exercises-add').click this.onAddClick
 
   newButtonHtml: () ->
     "<div class=\"row bottom20\"><div class=\"col s3 right\"><a class=\"btn right exercises-add waves-effect top10 waves-light\" href=\"#\">Добавить</a></div></div>"
 
+  deleteButtonHtml: () ->
+    "<div class=\"col s1 right\">
+        <a class=\"btn right exercises-delete waves-effect waves-light\" href=\"#\">
+          <i class=\"material-icons\">not_interested</i>
+        </a>
+    </div>"
+
 
   onAddClick: (event) =>
     this.addItem()
 
+  onDeleteClick: (event) =>
+    if confirm "Удалить элемент?"
+      item = $(event.target).parents('.exercises-item')
+      this.deleteRequest(item)
+
   onChangeItemSelect: (event) =>
     item = $(event.target).parents('.exercises-item')
-    console.log('change')
     this.updateRequest(item)
 
   bindItem: (item) ->
     item.find('select').material_select()
-    item.find('select, input').change this.onChangeItemSelect
+    item.find('select, input, textarea').change this.onChangeItemSelect
+    item.find('.exercises-delete').click this.onDeleteClick
 
 
 
   addItem: (exercise = @blank_exercise) ->
     itemHtml = this.itemHtml(exercise)
     item = $('<div/>').html(itemHtml).contents()
-    console.log(itemHtml)
     item.appendTo(@e)
     this.createRequest(item) unless exercise.id
     this.bindItem(item)
@@ -47,7 +57,7 @@ class ExercisesList
       type: 'POST'
       success: (data, textStatus, jqXHR) ->
         if data.id
-          $(item).attr('id', "item-#{data.id}")
+          $(item).attr('id', "items_#{data.id}")
         else
           $(item).remove()
       error: (data, textStatus, jqXHR) ->
@@ -64,38 +74,57 @@ class ExercisesList
       error: (data, textStatus, jqXHR) ->
         console.log(data)
 
+  deleteRequest: (item) ->
+    exercise = this.serializeItem(item)
+    $.ajax @new_url+"/#{exercise.id}",
+      type: 'DELETE'
+      success: (data, textStatus, jqXHR) ->
+        $(item).remove()
+      error: (data, textStatus, jqXHR) ->
+        console.log(data)
+
   serializeItem: (item) ->
     item = $(item)
-    console.log(item)
-    exercise_id = item.find('select.exercise-id').val()
-    count = item.find('.count').val()
+    exercise_id = item.find('select.exercises-id').val()
+    count = item.find('.exercises-count').val()
+    desc =  item.find('textarea.exercises-description').val()
     id = item.attr('id').split('_')[1]
-    {id: id, exercise_id: exercise_id, count: count}
+    {id: id, exercise_id: exercise_id, count: count, description: desc}
 
 
   itemHtml: (exercise) ->
-    "<li class=\"row exercises-item\" id=\"items_#{exercise.id}\">
-        #{this.exerciseSelectHtml(exercise.exercise_id)}
-        #{this.exerciseCountHtml(exercise.count)}
+    console.log(exercise)
+    order = $('li.exercises-item').length+1
+    order = exercise.order  if exercise.order
+    "<li class=\"row sortable-li exercises-item\" id=\"items_#{exercise.id}\">
+          <div class=\"exercises-order orderable-index\">#{order}</div>
+          #{this.exerciseSelectHtml(exercise.exercise_id)}
+          #{this.exerciseCountHtml(exercise.count)}
+          #{this.exerciseDescHtml(exercise.description)}
+          #{this.deleteButtonHtml()}
     </li>"
 
   exerciseSelectHtml: (exercise_id) ->
     "<div class=\"col s4\">
-      <select class=\"exercise-id\" placeholder=\"Выберите упражнение\">
+      <select class=\"exercises-id\" placeholder=\"Выберите упражнение\">
         #{this.exerciseOptionsHtml(exercise_id)}
       </select>
      </div>"
 
   exerciseCountHtml: (count) ->
-    console.log(count)
-    count = '' if count=='null'
-    "<div class=\"col s2\">
-          <input type=\"text\" class=\"count\" value=\"#{count}\" placeholder=\"Повторений\"></input>
+    count = '' if count=='null' || count==null
+    "<div class=\"col s1\">
+          <input type=\"text\" class=\"exercises-count\" value=\"#{count}\"></input>
+     </div>"
+
+  exerciseDescHtml: (desc) ->
+    count = 0 if count=='null' || count==null
+    "<div class=\"col s4\">
+          <textarea class=\"exercises-description materialize-textarea\" placeholder=\"Описание\">#{desc}</textarea>
      </div>"
 
 
   exerciseOptionsHtml: (selected_id) ->
-    console.log(selected_id)
     options = "<option value disabled selected>...</option>"
     for item in @all_exercises
       selected = ''

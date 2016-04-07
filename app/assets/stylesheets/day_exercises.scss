@@ -4,13 +4,40 @@
 
 
 .exercises{
+  &-add{
+    background-color: #ee6e73;
+  }
+
   &-list{
     padding-top: 20px;
   }
   &-item{
-    padding: 10px;
     border: 0px solid #ee6e73;
     border-top-width: 2px;
-    border-left-width: 30px;
   }
+
+  &-order{
+    float: left;
+    color: #eeeeee;
+    font-size: 2em;
+    text-align: center;
+    width: 50px;
+    padding: 20px 10px;
+    background-color: #ee6e73;
+
+  }
+
+  &-description{
+    padding-top: 10px !important;
+  }
+
+  &-delete{
+    margin-top: 20px;
+    background-color: #ee6e73;
+    padding: 0 10px;
+    i{
+      margin-bottom: 5px;
+    }
+  }
+
 }

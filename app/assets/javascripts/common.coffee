@@ -4,6 +4,7 @@ $ ->
 
   $('.uisortable').sortable
     axis: 'y'
+    handle: ".orderable-index"
     update: (event, ui) ->
       data = $(this).sortable('serialize')
       # POST to server using $.post or $.ajax
@@ -13,6 +14,6 @@ $ ->
         type: 'POST'
 
         success: (data, textStatus, jqXHR) ->
-          for value, index in self.find('li')
+          for value, index in self.find('li.sortable-li')
             console.log(value)
             $(value).find('.orderable-index').html(index+1)

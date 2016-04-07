@@ -23,9 +23,22 @@ class DayExercisesController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      format.json do
+        de = DayExercise.find(params[:id])
+        if de.destroy
+          render json: de
+        else
+          render json: { :success => false }
+        end
+      end
+    end
+  end
+
 
   private
   def de_params
-    params.permit(:exercise_id, :count)
+    params.permit(:exercise_id, :count, :description)
   end
 end
