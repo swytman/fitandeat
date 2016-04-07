@@ -1,7 +1,7 @@
 class ProgramDaysList
   constructor: (container) ->
     @e = $(container)
-    @days = window.program_days
+    @days = window.program_days || []
     @parent_id = window.parent_id
     @new_url = '/program_days'
     @blank_day = {id: '', day_exercises: []}
