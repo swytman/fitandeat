@@ -14,13 +14,13 @@ class ExercisesList
     $('.exercises-add').click this.onAddClick
 
   newButtonHtml: () ->
-    "<div class=\"row bottom20\"><div class=\"col s3 right\"><a class=\"btn right exercises-add waves-effect top10 waves-light\" href=\"#\">Добавить</a></div></div>"
+    "<div class=\"row bottom20\"><div class=\"col s3 right\"><div class=\"btn right exercises-add waves-effect top10 waves-light\">Добавить</div></div></div>"
 
   deleteButtonHtml: () ->
     "<div class=\"col s1 right\">
-        <a class=\"btn right exercises-delete waves-effect waves-light\" href=\"#\">
+        <div class=\"btn right exercises-delete waves-effect waves-light\">
           <i class=\"material-icons\">not_interested</i>
-        </a>
+        </div>
     </div>"
 
   onAddClick: (event) =>
@@ -55,8 +55,9 @@ class ExercisesList
       data: data
       type: 'POST'
       success: (data, textStatus, jqXHR) ->
-        if data.id
-          $(item).attr('id', "items_#{data.id}")
+        console.log(data.day_exercise.id)
+        if data.day_exercise.id
+          $(item).attr('id', "items_#{data.day_exercise.id}")
         else
           $(item).remove()
       error: (data, textStatus, jqXHR) ->

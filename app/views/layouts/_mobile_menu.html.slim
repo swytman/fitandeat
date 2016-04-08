@@ -1,7 +1,12 @@
-ul#nav-mobile.left.hide-on-med-and-down
+ul#mobile-demo.side-nav
   li
     a href=exercises_path Упражнения
   li
     a href=units_path Ед.изм.
   li
     a href=programs_path Программы
+
+javascript:
+  $(document).ready(function() {
+    $(".button-collapse").sideNav();
+  });

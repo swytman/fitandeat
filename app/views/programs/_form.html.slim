@@ -1,12 +1,12 @@
 .row
   ul.tabs.z-depth-1
-    li.tab.col.s3
+    li.tab
       a.active href="#common"  Общая
     - disabled = 'disabled' if @item.new_record?
-    li.tab.col.s3 class=disabled
+    li.tab class=disabled
       a href="#days"  Расписание
 
-  #common.col.s12.top30
+  #common.top30
     .row
       .col.s12
         = form_for(@item) do |f|
@@ -42,9 +42,10 @@
                   =link_to 'Удалить', program_path(@item), method: :delete, class: 'btn waves-effect waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
 
   - if !@item.new_record?
-    #days.col.s12.top30
-      ul.days-list.uisortable data-url=api_update_order_path({class: 'ProgramDay'})
+    #days.top30
+      .row
+        ul.col.s12.days-list.uisortable data-url=api_update_order_path({class: 'ProgramDay'})
 
 javascript:
- window.program_days = #{@program_days_json.html_safe};
+ window.program_days = #{@program_days_json.try(:html_safe)};
  window.parent_id = #{@item.id};
