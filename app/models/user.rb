@@ -13,6 +13,16 @@ class User < ActiveRecord::Base
   #validates :name, uniqueness: true
 
   has_and_belongs_to_many :groups
+  has_many :subscriptions
+
+  def self.get_or_create_by_telegram_id telegram_id
+    user = User.find_by(telegram_id: telegram_id)
+    if user.nil?
+      User.create({telegram_id: telegram_id})
+    else
+      user
+    end
+  end
 
   def admin?
     groups.find_by(key: 'administrators').present?

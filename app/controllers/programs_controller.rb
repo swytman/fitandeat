@@ -5,6 +5,12 @@ class ProgramsController < ApplicationController
 
   def index
     @items = Program.all
+    respond_to do |format|
+      format.json do
+        render json: @items
+      end
+    end
+
   end
 
   def create
