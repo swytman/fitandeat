@@ -9,6 +9,9 @@ class ProgramsController < ApplicationController
       format.json do
         render json: @items
       end
+      format.html do
+
+      end
     end
 
   end
