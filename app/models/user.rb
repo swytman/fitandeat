@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   #TEMP_EMAIL_REGEX = /\Achange@me/
   #has_one :identity
 
-  devise :database_authenticatable, :registerable, :confirmable, :validatable,
-         :recoverable, :rememberable, :trackable, :omniauthable
+  # devise :database_authenticatable, :registerable, :confirmable, :validatable,
+  #        :recoverable, :rememberable, :trackable, :omniauthable
 
   #validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   #validates :name, uniqueness: true

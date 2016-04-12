@@ -9,7 +9,5 @@ class AddSubscriptions < ActiveRecord::Migration
       t.date :start_date
     end
 
-    add_column :users, :telegram_name, :string
-
   end
 end

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :program_days
   resources :day_exercises
 
+  get "/subscriptions/sign" => 'subscriptions#sign'
+
   post "api/update_order" => 'api#update_order'
 
   # The priority is based upon order of creation: first created -> highest priority.
