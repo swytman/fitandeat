@@ -7,7 +7,14 @@ class ProgramsController < ApplicationController
     @items = Program.all
     respond_to do |format|
       format.json do
-        render json: @items
+        if @items
+          response = render_to_string(:template => 'telegram/programs/programs',
+                                      :layout => false,
+                                      :locals => {programs: @items})
+        else
+          response = 'Нет доступных программ'
+        end
+        render json:  {message: response}
       end
       format.html do
 

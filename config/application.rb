@@ -22,5 +22,14 @@ module Fitandeat
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.time_zone = 'Minsk'
+    Time.zone = 'Minsk'
+
+    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+    config.i18n.enforce_available_locales = true
+    config.i18n.default_locale = :ru
+    config.i18n.enforce_available_locales = false
+
   end
 end

@@ -1,0 +1,5 @@
+| Вы подписаны на следующие программы<br>
+- s.each do |sign|
+  | --- <br>
+  | ID: #{sign.program_id} *#{sign.program.try(:title)}*<br>
+  | Начало #{I18n.l(sign.start_date, format: :long)}<br>

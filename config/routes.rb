@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resources :day_exercises
 
   get "/subscriptions/sign" => 'subscriptions#sign'
-
+  get "/subscriptions/unsign" => 'subscriptions#unsign'
+  get "/subscriptions/signs" => 'subscriptions#signs'
+  get "/subscriptions/today" => 'subscriptions#today'
+  get "/subscriptions/schedule" => 'subscriptions#schedule'
   post "api/update_order" => 'api#update_order'
 
   # The priority is based upon order of creation: first created -> highest priority.
