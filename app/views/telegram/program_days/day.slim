@@ -1,0 +1,8 @@
+- if exercises.count > 0
+  | *#{day_number}-й день:*<br>
+  - exercises.each do |exercise|
+    = render template: 'telegram/day_exercises/exercise', locals: {exercise: exercise}
+- else
+  | *#{day_number}-й день:*<br>
+  | Отдыхаем!<br>
+| <br>

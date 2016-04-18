@@ -3,16 +3,26 @@ Rails.application.routes.draw do
   root 'static#index'
   resources :exercises
   resources :units
+
+
+  namespace :telegram do
+    get "/programs" => 'telegram_api1#programs'
+    get "/details" => 'telegram_api1#details'
+    get "sign" => 'telegram_api1#sign'
+    get "/unsign" => 'telegram_api1#unsign'
+    get "/mysigns" => 'telegram_api1#mysigns'
+    get "/today" => 'telegram_api1#today'
+    get "/day" => 'telegram_api1#day'
+    get "schedule" => 'telegram_api1#schedule'
+  end
+
   resources :programs
   resources :program_days
   resources :day_exercises
 
-  get "/subscriptions/sign" => 'subscriptions#sign'
-  get "/subscriptions/unsign" => 'subscriptions#unsign'
-  get "/subscriptions/signs" => 'subscriptions#signs'
-  get "/subscriptions/today" => 'subscriptions#today'
-  get "/subscriptions/day" => 'subscriptions#day'
-  get "/subscriptions/schedule" => 'subscriptions#schedule'
+
+
+
   post "api/update_order" => 'api#update_order'
 
   # The priority is based upon order of creation: first created -> highest priority.

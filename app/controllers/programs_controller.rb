@@ -5,22 +5,6 @@ class ProgramsController < ApplicationController
 
   def index
     @items = Program.all
-    respond_to do |format|
-      format.json do
-        if @items
-          response = render_to_string(:template => 'telegram/programs/programs',
-                                      :layout => false,
-                                      :locals => {programs: @items})
-        else
-          response = 'Нет доступных программ'
-        end
-        render json:  {message: response}
-      end
-      format.html do
-
-      end
-    end
-
   end
 
   def create

@@ -1,7 +1,0 @@
-| Сегодня #{day_number}-й день.
-- if exercises.count > 0
-  | План тренировок такой:<br>
-  - exercises.each do |exercise|
-    = render template: 'telegram/day_exercises/exercise', locals: {exercise: exercise}
-- else
-  | Отдыхаем!
