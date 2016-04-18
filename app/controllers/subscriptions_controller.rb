@@ -131,6 +131,37 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def day
+    respond_to do |format|
+      format.json do
+        return(head :bad_request) unless params[:telegram_id] || params[:order]
+        user = User.get_or_create_by_telegram_id(params[:telegram_id])
+        return (head :bad_request) unless user
+
+        subscriptions = user.subscriptions
+
+        if subscriptions.length == 0
+          response = 'Вы не подписаны ни на одну программу'
+        else
+          s = subscriptions[0]
+          day_today = s.program_day_by_order params[:order]
+          if day_today == 0
+            response = 'Неверный день'
+          elsif day_today == -1
+            response = 'В программе меньше дней'
+          else
+            exercises = day_today.day_exercises.order('day_exercises.order ASC')
+            response = render_to_string(:template => 'telegram/subscriptions/today',
+                                        :layout => false,
+                                        :locals => {exercises: exercises, day_number: day_today.order})
+          end
+        end
+        render json: {message: response}
+      end
+    end
+  end
+
+
 
 
   def update

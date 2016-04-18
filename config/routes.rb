@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/subscriptions/unsign" => 'subscriptions#unsign'
   get "/subscriptions/signs" => 'subscriptions#signs'
   get "/subscriptions/today" => 'subscriptions#today'
+  get "/subscriptions/day" => 'subscriptions#day'
   get "/subscriptions/schedule" => 'subscriptions#schedule'
   post "api/update_order" => 'api#update_order'
 
