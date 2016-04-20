@@ -3,3 +3,5 @@
 - program.program_days.order('program_days.order ASC').each do |day|
   = render template: 'telegram/program_days/day',
            locals: {day_number: day.order, exercises: day.day_exercises.order('day_exercises.order ASC')}
+
+| Наберите */sign #{program.id}*, чтобы подписаться<br>

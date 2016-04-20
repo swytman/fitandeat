@@ -44,13 +44,13 @@ class Telegram::TelegramApi1Controller < ApplicationController
           day_today = s.program_day_today
           if day_today.class == ProgramDay
             exercises = day_today.day_exercises.order('day_exercises.order ASC')
-            response = render_to_string(:template => 'telegram/subscriptions/today',
+            response = render_to_string(:template => 'telegram/program_days/day',
                                         :layout => false,
                                         :locals => {exercises: exercises, day_number: day_today.order})
             result << {id: s.user.telegram_id, message: response}
           end
         end
-        render json: result
+        render json: {message: result}
       end
     end
   end
