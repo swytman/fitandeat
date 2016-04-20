@@ -5,7 +5,7 @@ class Subscription < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :program_id
 
   def program_day_today
-    day_number = (Time.now.to_date - start_date).to_i+2
+    day_number = (Time.now.to_date - start_date).to_i+1
 
 
     if day_number < 1
