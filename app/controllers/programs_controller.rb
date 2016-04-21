@@ -4,7 +4,7 @@ class ProgramsController < ApplicationController
   before_action :get_item, only: [:show, :edit, :destroy, :update]
 
   def index
-    @items = Program.all
+    @items = Program.includes(:subscriptions)
   end
 
   def create

@@ -19,6 +19,13 @@
                                   {selected: @item.unit_id, include_blank: true}, {class: ''}
             label for='unit_id' Единица измерения
 
+      .row
+        .col.s12
+          .input-field
+            = f.collection_select :equipment_ids, Equipment.all, :id, :title,
+                                  {selected: @item.equipment_ids, include_blank: true}, {multiple: true, class: ''}
+            label for='equipment_ids' Инвентарь
+
 
       .row
         .col.s8

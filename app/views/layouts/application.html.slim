@@ -12,6 +12,7 @@ html
 
     = csrf_meta_tags
   body
+    = render 'layouts/messages'
     .row
       nav
         .nav-wrapper.col.s12
@@ -27,5 +28,4 @@ html
           = render 'layouts/mobile_menu'
 
     .container
-      = render 'layouts/messages'
       = yield

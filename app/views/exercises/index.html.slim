@@ -1,8 +1,8 @@
 .row
-  .col.s9
+  .col.s8
     h5.header Упражнения
-  .col.s3
-    a.btn.waves-effect.top10.waves-light href=new_exercise_path Cоздать
+  .col.s4
+    a.btn.waves-effect.top10.right.waves-light href=new_exercise_path Cоздать
 ul
   - @items.each do |item|
     li: a href=edit_exercise_path(item) =item.title

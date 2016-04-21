@@ -1,9 +1,9 @@
 .row
-  .col.s9
+  .col.s6
     h5.header Программы
-  .col.s3
-    a.btn.waves-effect.top10.waves-light href=new_program_path Cоздать
+  .col.s6
+    a.btn.waves-effect.top10.right.waves-light href=new_program_path Cоздать
 ul
   - @items.each do |item|
-    li: a href=edit_program_path(item) =item.title
+    li: a href=edit_program_path(item) #{item.title} (#{item.subscriptions.count})
 

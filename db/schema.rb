@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412190119) do
+ActiveRecord::Schema.define(version: 20160421152058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,22 @@ ActiveRecord::Schema.define(version: 20160412190119) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.text     "description",    default: ""
+  end
+
+  create_table "equipment", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+  end
+
+  create_table "equipment_exercises", id: false, force: :cascade do |t|
+    t.integer "equipment_id", null: false
+    t.integer "exercise_id",  null: false
   end
 
   create_table "exercises", force: :cascade do |t|

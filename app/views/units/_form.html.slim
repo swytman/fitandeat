@@ -26,16 +26,16 @@
             label for='many_title' Много
 
       .row
-        .col.s8
+        .col.s7
           .input-field
             button.btn.waves-effect.waves-light name="action" type="submit"
               | Сохранить
               i.material-icons.right send
             a.btn-flat href="#{units_path}" Отмена
         - unless @item.new_record?
-          .col.s4.right
+          .col.s5
             .input-field
-              =link_to 'Удалить', unit_path(@item), method: :delete, class: 'btn waves-effect waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
+              =link_to 'Удалить', unit_path(@item), method: :delete, class: 'btn waves-effect right waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
 
 
 

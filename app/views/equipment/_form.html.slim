@@ -1,0 +1,31 @@
+.row
+  .col.s12
+    = form_for(@item) do |f|
+
+
+      .row
+        .col.s12
+          .input-field
+            = f.text_field :title
+            label for='title' Наименование
+
+      .row
+        .col.s12
+          .input-field
+            = f.text_area :description, class: 'materialize-textarea'
+            label for='description' Описание
+
+      .row
+        .col.s7
+          .input-field
+            button.btn.waves-effect.waves-light name="action" type="submit"
+              | Сохранить
+              i.material-icons.right send
+            a.btn-flat href="#{equipment_index_path}" Отмена
+        - unless @item.new_record?
+          .col.s5
+            .input-field
+              =link_to 'Удалить', equipment_path(@item), method: :delete, class: 'btn waves-effect right waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
+
+
+

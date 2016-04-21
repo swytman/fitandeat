@@ -9,7 +9,7 @@ class UnitsController < ApplicationController
 
     def create
       @item = Unit.new(unit_params)
-      if @Sitem.save
+      if @item.save
         redirect_to units_path, notice: 'Создано'
       else
         render action: 'new', error: 'Ошибка при добавлении'

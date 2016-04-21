@@ -30,16 +30,16 @@
                   label for='title' Сколько дней создать?
 
           .row
-            .col.s8
+            .col.s7
               .input-field
                 button.btn.waves-effect.waves-light name="action" type="submit"
                   | Сохранить
                   i.material-icons.right send
                 a.btn-flat href="#{programs_path}" Отмена
             - unless @item.new_record?
-              .col.s4.right
+              .col.s5
                 .input-field
-                  =link_to 'Удалить', program_path(@item), method: :delete, class: 'btn waves-effect waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
+                  =link_to 'Удалить', program_path(@item), method: :delete, class: 'btn waves-effect right waves-light red lighten-2', data: {confirm: 'Подтвердите удаление'}
 
   - if !@item.new_record?
     #days.top30
