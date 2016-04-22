@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
 
   post "api/update_order" => 'api#update_order'
+  post "api/clone_program_day" => 'api#clone_program_day'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

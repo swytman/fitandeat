@@ -27,11 +27,24 @@ class ProgramDaysList
     link = $('<div/>').html(html).contents()
     link.appendTo($(item))
 
+  addCloneLink: (item) ->
+    html = this.cloneSpanHtml(item)
+    link = $('<div/>').html(html).contents()
+    link.appendTo($(item))
+
   editLinkHtml: (item) ->
     id = this.serializeItem(item).id
     "<a class=\"days-edit \" href=\"/program_days/#{id}/edit\">
        Редактировать
     </a>"
+
+  cloneSpanHtml: (item) ->
+    id = this.serializeItem(item).id
+    "<div class=\"col s1 right\">
+        <div class=\"btn right days-clone waves-effect waves-light\" data-id=\"#{id}\">
+          <i class=\"material-icons\">library_books</i>
+        </div>
+    </div>"
 
   onAddClick: (event) =>
     this.addItem()
@@ -41,12 +54,18 @@ class ProgramDaysList
       item = $(event.target).parents('.days-item')
       this.deleteRequest(item)
 
+  onCloneClick: (event) =>
+    item = $(event.target).parents('.days-item')
+    this.cloneRequest(item)
+
 #  onChangeItemSelect: (event) =>
 #    item = $(event.target).parents('.days-item')
 #    this.updateRequest(item)
 
   bindItem: (item) ->
     item.find('.days-delete').click this.onDeleteClick
+    item.find('.days-clone').click this.onCloneClick
+
 
 
   addItem: (day = @blank_day) ->
@@ -55,6 +74,7 @@ class ProgramDaysList
     item.appendTo(@e)
     this.createRequest(item) unless day.id
     this.addEditLink(item) if day.id
+    this.addCloneLink(item) if day.id
     this.bindItem(item)
 
   createRequest: (item) ->
@@ -72,6 +92,17 @@ class ProgramDaysList
       error: (data, textStatus, jqXHR) ->
         $(item).remove
 
+  cloneRequest: (item) ->
+    id = @serializeItem(item).id
+    self = @
+    $.ajax "/api/clone_program_day",
+      data: {id: id}
+      type: 'POST'
+      success: (data, textStatus, jqXHR) ->
+        day = data.program_day
+        self.addItem(day)
+      error: (data, textStatus, jqXHR) ->
+        console.log(data)
 
   deleteRequest: (item) ->
     day = this.serializeItem(item)

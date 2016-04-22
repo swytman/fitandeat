@@ -4,7 +4,7 @@ class ExercisesController < ApplicationController
   before_action :get_item, only: [:show, :edit, :destroy, :update]
 
   def index
-    @items = Exercise.all
+    @items = Exercise.all.to_a.sort_by{|i| i.title}
   end
 
   def create

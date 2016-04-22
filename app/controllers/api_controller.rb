@@ -12,4 +12,15 @@ class ApiController < ActionController::Base
       end
     end
   end
+
+  def clone_program_day
+    return(head :bad_request) unless params[:id]
+    program_day = ProgramDay.find_by(id: params[:id])
+    return (head :not_found) unless program_day
+
+    render json: program_day.clone_day
+    
+  end
+
+
 end
