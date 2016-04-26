@@ -19,7 +19,7 @@ class ApiController < ActionController::Base
     return (head :not_found) unless program_day
 
     render json: program_day.clone_day
-    
+
   end
 
 

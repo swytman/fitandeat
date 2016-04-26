@@ -58,7 +58,7 @@ class ProgramsController < ApplicationController
   private
 
   def program_params
-    params[:program].permit(:title, :description)
+    params[:program].permit(:title, :description, :cycle)
   end
 
   def get_item

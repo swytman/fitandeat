@@ -14,20 +14,26 @@
             .col.s12
               .input-field
                 = f.text_field :title
-                label for='title' Название
+                label for='program_title' Название
 
           .row
             .col.s12
               .input-field
                 = f.text_area :description, class: 'materialize-textarea'
-                label for='title' Описание
+                label for='program_description' Описание
+
+          .row
+
+            .input-field
+              = f.check_box :cycle
+              label for='program_cycle' Повторять по кругу
 
           - if @item.new_record?
             .row
               .col.s12
                 .input-field
                   = text_field_tag :days_count
-                  label for='title' Сколько дней создать?
+                  label for='program_days_count' Сколько дней создать?
 
           .row
             .col.s7
