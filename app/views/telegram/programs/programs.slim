@@ -2,7 +2,7 @@
 |---<br>
 - programs.each do |program|
   | ID:#{program.id} - *#{program.title}*<br>#{program.description}<br>
-  | Всего дней - #{program.program_days.length}<br>
+  | Всего дней - #{program.program_days.length} #{'(повтор по кругу)' if program.cycle}<br>
   |---<br>
 | Наберите */sign ID*, чтобы подписаться на программу<br>
 | Наберите */details ID*, чтобы получить подробное описание программы<br>

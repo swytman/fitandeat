@@ -7,10 +7,7 @@ class Subscription < ActiveRecord::Base
   def program_day_today
     day_number = (Time.now.to_date - start_date).to_i+1
     count = program.program_days.count
-
-
     day_number = day_number % count if program.cycle
-
 
     if day_number < 1
       return 0
@@ -25,14 +22,15 @@ class Subscription < ActiveRecord::Base
   end
 
   def program_day_by_order order
-
     day_number = order.to_i
+    count = program.program_days.count
+    day_number = day_number % count if program.cycle
 
     if day_number < 1
       return 0
     end
 
-    if day_number > program.program_days.count
+    if day_number > count
       return -1
     end
 
