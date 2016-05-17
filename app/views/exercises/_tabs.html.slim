@@ -1,0 +1,7 @@
+.row
+  ul.tabs.z-depth-1
+    li.tab
+      a.active href=edit_exercise_path(@item) target="_blank" Общая
+    - disabled = 'disabled' if @item.new_record?
+    li.tab class=disabled
+      a href=exercise_steps_path(@item)  target="_blank" Описание

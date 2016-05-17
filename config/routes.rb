@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'static#index'
-  resources :exercises
+  resources :exercises do
+    member do
+      resources :exercise_steps
+    end
+  end
   resources :equipment
   resources :units
 
